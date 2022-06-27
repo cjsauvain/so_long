@@ -6,11 +6,12 @@
 #    By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 14:33:12 by jsauvain          #+#    #+#              #
-#    Updated: 2022/06/25 11:21:52 by jsauvain         ###   ########.fr        #
+#    Updated: 2022/06/27 16:49:59 by jsauvain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = so_long.c initializations.c hooks.c print_cases.c get_P_coordinates.c move_functions.c
+SRCS = main.c initializations.c key_hook.c print_cases.c coordinates.c \
+		move_functions.c destroy.c print_board.c check_errors.c check_errors_2.c
 
 OBJS = $(SRCS:.c=.o)
 

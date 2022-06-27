@@ -1,54 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_P_coordinates.c                                :+:      :+:    :+:   */
+/*   coordinates.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 10:01:06 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/25 11:41:12 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:21:26 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_src(char *src)
+int	check_coordinates(t_mlx *main, int k, int l)
 {
-	int	i;
-
-	i = 0;
-	while (src[i])
+	if (main->file[(main->y / 48) - k][(main->x / 48) - l] != '1')
 	{
-		if (src[i] == 'P')
-			return (0);
-		i++;
+		if (main->file[(main->y / 48) - k][(main->x / 48) - l] == 'C')
+		{
+			main->file[(main->y / 48) - k][(main->x / 48) - l] = '0';
+			main->c--;
+		}
+		return (0);
 	}
 	return (1);
 }
 
-int	get_P_coordinates(t_mlx *main)
+int	get_p_coordinates(t_mlx *main)
 {
-	int		fd;
 	int		j;
 	int		i;
-	char	*src;
-	
-	fd = open(main->file, O_RDONLY);
+
 	i = 0;
-	if (fd == -1)
-		return (1);
-	src = get_next_line(fd);
-	j = 1;
-	while (check_src(src) == 1 && src != NULL)
+	while (main->file[i])
 	{
-		src = get_next_line(fd);
-		j++;
-	}
-	while (src[i] != 'P' && src[i] && src != NULL)
+		j = 0;
+		while (main->file[i][j])
+		{
+			if (main->file[i][j] == 'P')
+			{
+				main->x = j * 48;
+				main->y = i * 48;
+				return (0);
+			}
+			j++;
+		}
 		i++;
-	if (src[i] == '\0' || src == NULL)
-		return (1);
-	main->x = i * 48;
-	main->y = (j - 1) * 48;
+	}
 	return (0);
 }

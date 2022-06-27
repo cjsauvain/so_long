@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:02:02 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/25 08:54:16 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:49:38 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_xpm	xpm_names(t_xpm path)
 	path.gc = "image/green_case.xpm";
 	path.wp_ow = "image/white_pawn_on_white.xpm";
 	path.wp_og = "image/white_pawn_on_green.xpm";
-	path.bp_ow = "image/black_pawn_on_white.xpm";
-	path.bp_og = "image/black_pawn_on_green.xpm";
+	path.br_ow = "image/black_rook_on_white.xpm";
+	path.br_og = "image/black_rook_on_green.xpm";
 	path.bq_ow = "image/blue_queen_on_white.xpm";
 	path.bq_og = "image/blue_queen_on_green.xpm";
 	path.yk_ow = "image/yellow_king_on_white.xpm";
@@ -37,10 +37,10 @@ t_imgs	file_to_image(t_mlx *main)
 		main->path.wp_ow, &l, &l);
 	main->sprite.wp_og = mlx_xpm_file_to_image(main->mlx, \
 		main->path.wp_og, &l, &l);
-	main->sprite.bp_ow = mlx_xpm_file_to_image(main->mlx, \
-		main->path.bp_ow, &l, &l);
-	main->sprite.bp_og = mlx_xpm_file_to_image(main->mlx, \
-		main->path.bp_og, &l, &l);
+	main->sprite.br_ow = mlx_xpm_file_to_image(main->mlx, \
+		main->path.br_ow, &l, &l);
+	main->sprite.br_og = mlx_xpm_file_to_image(main->mlx, \
+		main->path.br_og, &l, &l);
 	main->sprite.bq_ow = mlx_xpm_file_to_image(main->mlx, \
 		main->path.bq_ow, &l, &l);
 	main->sprite.bq_og = mlx_xpm_file_to_image(main->mlx, \

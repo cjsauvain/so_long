@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 09:28:40 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/25 11:44:23 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:44:40 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_imgs
 	void	*gc;
 	void	*wp_ow;
 	void	*wp_og;
-	void	*bp_ow;
-	void	*bp_og;
+	void	*br_ow;
+	void	*br_og;
 	void	*bq_ow;
 	void	*bq_og;
 	void	*yk_ow;
@@ -37,8 +37,8 @@ typedef struct s_xpm
 	char	*gc;
 	char	*wp_ow;
 	char	*wp_og;
-	char	*bp_ow;
-	char	*bp_og;
+	char	*br_ow;
+	char	*br_og;
 	char	*bq_ow;
 	char	*bq_og;
 	char	*yk_ow;
@@ -47,32 +47,49 @@ typedef struct s_xpm
 
 typedef struct s_mlx
 {
+	int		error_c;
+	int		error_e;
+	int		error_p;
+	int		c;
 	int		x;
 	int		y;
+	int		step;
 	void	*mlx;
 	void	*win;
-	char	*file;
+	char	**file;
 	t_imgs	sprite;
 	t_xpm	path;
 }	t_mlx;
 
-//so_long.c
-void	put_board_on_window(t_mlx *main, char *file);
-t_mlx	get_dimensions(t_mlx main);
+//check_errors.c
+int		strlen_double(char **str);
+int		check_inside_map2(t_mlx *main);
+int		check_error(t_mlx *main, char *file);
+
+//check_errors_2.c
+int		check_file_format(char *file);
+int		check_dimension(char **buf);
+int		check_walls(char **buf);
+int		check_inside_map(t_mlx *main);
+int		check_map_letters(char **buf);
 
 //initializations.c
 t_xpm	xpm_names(t_xpm path);
 t_imgs	file_to_image(t_mlx *main);
 
+//print_board.c
+int		board_on_window(t_mlx *main);
+int		count_file_lines(char *str);
+int		get_map(t_mlx *main, char *file_path, int i);
+
 //print_cases.c
 void	null_even_cases(t_mlx *main, char *str);
-void	even_cases(t_mlx *main, char *str);
 void	null_odd_cases(t_mlx *main, char *str);
+void	even_cases(t_mlx *main, char *str);
 void	odd_cases(t_mlx *main, char *str);
 
-//hooks.c
-void	destroy_images(t_mlx *mlx);
-int		check_coordinates(t_mlx main);
+//key_hook.c
+int		print_exit_case(t_mlx *main);
 int		key_hook(int keycode, t_mlx *mlx);
 
 //move_functions.c
@@ -81,8 +98,13 @@ void	s_move(t_mlx *main);
 void	a_move(t_mlx *main);
 void	d_move(t_mlx *main);
 
-//get_P_coordinates.c
-int	check_src(char *src);
-int	get_P_coordinates(t_mlx *main);
+//coordinates.c
+int		check_coordinates(t_mlx *main, int k, int l);
+int		get_p_coordinates(t_mlx *main);
+
+//destroy.c
+void	free_pointers(char **buf);
+void	destroy(t_mlx *main);
+void	destroy_images(t_mlx *mlx);
 
 #endif

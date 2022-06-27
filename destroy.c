@@ -1,16 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 11:13:34 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/25 11:45:15 by jsauvain         ###   ########.fr       */
+/*   Created: 2022/06/26 17:34:06 by jsauvain          #+#    #+#             */
+/*   Updated: 2022/06/27 10:26:04 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_pointers(char **buf)
+{
+	int	i;
+
+	i = 0;
+	while (buf[i])
+		free(buf[i++]);
+	free(buf);
+}
+
+void	destroy(t_mlx *main)
+{
+	free_pointers(main->file);
+	mlx_destroy_window(main->mlx, main->win);
+	destroy_images(main);
+	mlx_loop_end(main->mlx);
+	mlx_destroy_display(main->mlx);
+	free(main->mlx);
+	exit(1);
+}
 
 void	destroy_images(t_mlx *main)
 {
@@ -22,40 +43,16 @@ void	destroy_images(t_mlx *main)
 		mlx_destroy_image(main->mlx, main->sprite.wp_ow);
 	if (main->sprite.wp_og != NULL)
 		mlx_destroy_image(main->mlx, main->sprite.wp_og);
-	if (main->sprite.bp_ow != NULL)
-		mlx_destroy_image(main->mlx, main->sprite.bp_ow);
-	if (main->sprite.bp_og != NULL)
-		mlx_destroy_image(main->mlx, main->sprite.bp_og);
+	if (main->sprite.br_ow != NULL)
+		mlx_destroy_image(main->mlx, main->sprite.br_ow);
+	if (main->sprite.br_og != NULL)
+		mlx_destroy_image(main->mlx, main->sprite.br_og);
 	if (main->sprite.bq_ow != NULL)
 		mlx_destroy_image(main->mlx, main->sprite.bq_ow);
+	if (main->sprite.bq_og != NULL)
+		mlx_destroy_image(main->mlx, main->sprite.bq_og);
 	if (main->sprite.yk_ow != NULL)
 		mlx_destroy_image(main->mlx, main->sprite.yk_ow);
 	if (main->sprite.yk_og != NULL)
 		mlx_destroy_image(main->mlx, main->sprite.yk_og);
-}
-/*
-int	check_coordinates(t_mlx main)
-{
-
-}
-*/
-int	key_hook(int keycode, t_mlx *main)
-{
-	if (keycode == XK_Escape)
-	{
-		mlx_destroy_window(main->mlx, main->win);
-		destroy_images(main);
-		mlx_loop_end(main->mlx);
-		mlx_destroy_display(main->mlx);
-		exit(1);
-	}
-	if (keycode == 'w')
-		w_move(main);
-	else if (keycode == 's')
-		s_move(main);
-	else if (keycode == 'a')
-		a_move(main);
-	else if (keycode == 'd')
-		d_move(main);
-	return (0);
 }
