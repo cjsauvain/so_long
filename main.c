@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 09:28:25 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/27 17:58:57 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:36:37 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 		return (0);
 	get_p_coordinates(&main);
 	mlx_hook(main.win, KeyPress, KeyPressMask, key_hook, &main);
+	mlx_hook(main.win, DestroyNotify, StructureNotifyMask, mouse_hook, &main);
 	mlx_loop(main.mlx);
 	return (0);
 }

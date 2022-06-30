@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 09:28:40 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/27 17:44:40 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:39:07 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,10 @@ void	null_odd_cases(t_mlx *main, char *str);
 void	even_cases(t_mlx *main, char *str);
 void	odd_cases(t_mlx *main, char *str);
 
-//key_hook.c
+//hooks.c
 int		print_exit_case(t_mlx *main);
 int		key_hook(int keycode, t_mlx *mlx);
+int		mouse_hook(t_mlx *main);
 
 //move_functions.c
 void	w_move(t_mlx *main);

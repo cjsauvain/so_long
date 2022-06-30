@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:58:40 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/27 18:03:51 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:38:57 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,3 @@ int	check_error(t_mlx *main, char *file)
 		return (1);
 	return (0);
 }
-
-
-// Faire une fonction qui verifie les extra characters

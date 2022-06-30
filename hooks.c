@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 11:13:34 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/27 10:42:47 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:37:37 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,11 @@ int	key_hook(int keycode, t_mlx *main)
 		destroy(main);
 	if (main->c == 0)
 		print_exit_case(main);
+	return (0);
+}
+
+int	mouse_hook(t_mlx *main)
+{
+	destroy(main);
 	return (0);
 }

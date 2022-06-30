@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:37:19 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/27 17:50:49 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:38:49 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	check_inside_map(t_mlx *main)
 	int	j;
 
 	i = 1;
-	while (i < strlen_double(main->file) -1)
+	while (i < strlen_double(main->file) - 1)
 	{
 		j = 0;
 		while (main->file[i][j])
