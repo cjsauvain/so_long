@@ -6,12 +6,13 @@
 #    By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 14:33:12 by jsauvain          #+#    #+#              #
-#    Updated: 2022/06/28 15:38:01 by jsauvain         ###   ########.fr        #
+#    Updated: 2022/07/21 14:44:06 by jsauvain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c initializations.c hooks.c print_cases.c coordinates.c \
-		move_functions.c destroy.c print_board.c check_errors.c check_errors_2.c
+SRCS = srcs/main.c srcs/initializations.c srcs/hooks.c srcs/print_cases.c srcs/coordinates.c \
+		srcs/move_functions.c srcs/destroy.c srcs/print_board.c srcs/check_errors.c \
+		srcs/check_errors_2.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -28,24 +29,24 @@ CLR = clear
 all: $(NAME)
 
 clean:
-		make clean -C minilibx-linux
-		make clean -C libft
+		make clean -sC minilibx-linux
+		make clean -sC libft
 		$(RM) $(OBJS) $(CLR)
 
 fclean: clean
-		make fclean -C libft
+		make fclean -sC libft
 		$(RM) $(NAME)
 		$(CLR)
 
 .c.o:
-	${GCC} ${FLAGS} -c $< -o ${<:.c=.o}
+	$(GCC) $(FLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
 		$(CLR)
-		make -C libft
-		make -C minilibx-linux
-		$(GCC) $(CFLAGS) -o $(NAME) -L. $(SRCS) -Llibft -lft -Lminilibx-linux -lmlx -lXext -lX11 -lm
+		make -sC libft
+		make -sC minilibx-linux
+		$(GCC) $(CFLAGS) -o $(NAME) -L. $(OBJS) -Llibft -lft -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

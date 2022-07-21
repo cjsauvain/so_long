@@ -6,11 +6,21 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:02:02 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/25 16:49:38 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:00:05 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+t_mlx	init_main_ints(t_mlx main)
+{
+	main.error_c = 0;
+	main.error_e = 0;
+	main.error_p = 0;
+	main.c = 0;
+	main.step = 0;
+	return (main);
+}
 
 t_xpm	xpm_names(t_xpm path)
 {

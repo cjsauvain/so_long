@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:37:19 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/28 15:38:49 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:17:31 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	check_dimension(char **buf)
 	{
 		if (i && ft_strlen(buf[i - 1]) != ft_strlen(buf[i]))
 		{
-			ft_printf("Error\nThe shape is not rectangular.\n");
+			ft_printf("Error\nShape is not rectangular.\n");
 			return (1);
 		}
 		i++;
@@ -76,7 +76,9 @@ int	check_walls(char **buf)
 		i++;
 	}
 	if (n == 1)
+	{
 		ft_printf("Error\nNot surrounded by walls.\n");
+	}
 	return (n);
 }
 
@@ -102,7 +104,9 @@ int	check_inside_map(t_mlx *main)
 		i++;
 	}
 	if (check_inside_map2(main) == 1)
+	{
 		return (1);
+	}
 	return (0);
 }
 
@@ -120,7 +124,7 @@ int	check_map_letters(char **buf)
 			if (buf[i][j] != '1' && buf[i][j] != '0' && buf[i][j] != 'E'
 				&& buf[i][j] != 'C' && buf[i][j] != 'P')
 			{
-				ft_printf("Error\nA '%c' has been found at (%d;%d).\n" \
+				ft_printf("Error\n'%c' has been found at (%d;%d).\n" \
 				, buf[i][j], i, j);
 				return (1);
 			}

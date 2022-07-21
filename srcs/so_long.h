@@ -6,16 +6,16 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 09:28:40 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/28 15:39:07 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/07/21 14:44:26 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx-linux/mlx.h"
-# include "minilibx-linux/mlx_int.h"
-# include "libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
+# include "../libft/libft.h"
 
 typedef struct s_imgs
 {
@@ -74,6 +74,7 @@ int		check_inside_map(t_mlx *main);
 int		check_map_letters(char **buf);
 
 //initializations.c
+t_mlx	init_main_ints(t_mlx main);
 t_xpm	xpm_names(t_xpm path);
 t_imgs	file_to_image(t_mlx *main);
 

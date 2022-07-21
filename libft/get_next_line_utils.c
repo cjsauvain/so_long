@@ -6,7 +6,7 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:32:59 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/06/21 12:55:03 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/07/21 14:45:28 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,16 @@ char	*ft_read(char *dst, int fd)
 {
 	char	*buf;
 	int		ret;
-	int		BUFFER_SIZE;
+	int		buffer_size;
 
 	ret = 1;
-	BUFFER_SIZE = 1;
-	buf = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	if (buf == NULL || BUFFER_SIZE == 0)
+	buffer_size = 1;
+	buf = ft_calloc((buffer_size + 1), sizeof(char));
+	if (buf == NULL || buffer_size == 0)
 		return (NULL);
 	while (ret && dst_checked(dst) == 0)
 	{
-		ret = read(fd, buf, BUFFER_SIZE);
+		ret = read(fd, buf, buffer_size);
 		if (ret == -1)
 		{
 			ft_free(&buf, &dst, 1);
