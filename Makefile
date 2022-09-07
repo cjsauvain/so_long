@@ -6,7 +6,7 @@
 #    By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 14:33:12 by jsauvain          #+#    #+#              #
-#    Updated: 2022/07/21 14:44:06 by jsauvain         ###   ########.fr        #
+#    Updated: 2022/09/07 11:20:57 by jsauvain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME = so_long
 
 RM = rm -f
 
-GCC = gcc
+CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g3
 
@@ -39,13 +39,13 @@ fclean: clean
 		$(CLR)
 
 .c.o:
-	$(GCC) $(FLAGS) -c $< -o $(<:.c=.o)
+	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
 		$(CLR)
 		make -sC libft
 		make -sC minilibx-linux
-		$(GCC) $(CFLAGS) -o $(NAME) -L. $(OBJS) -Llibft -lft -Lminilibx-linux -lmlx -lXext -lX11 -lm
+		$(CC) $(CFLAGS) -o $(NAME) -L. $(OBJS) -Llibft -lft -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 re: fclean all
 
